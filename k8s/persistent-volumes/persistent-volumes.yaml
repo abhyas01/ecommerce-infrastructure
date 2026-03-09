@@ -1,0 +1,111 @@
+# Local storage paths used:
+#   dev:     /mnt/data/ecommerce/dev/postgres
+#   staging: /mnt/data/ecommerce/staging/postgres
+#   prod:    /mnt/data/ecommerce/prod/postgres
+#
+# These paths exist on the Minikube node (inside the minikube VM/container).
+# To create them: minikube ssh -- sudo mkdir -p /mnt/data/ecommerce/{dev,staging,prod}/postgres
+
+# ── Dev PersistentVolume ────────────────────────────────────────────────────────
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv-dev
+  labels:
+    environment: dev
+    project: ecommerce
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data/ecommerce/dev/postgres
+---
+# ── Dev PersistentVolumeClaim ───────────────────────────────────────────────────
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: dev
+  labels:
+    environment: dev
+    project: ecommerce
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 1Gi
+---
+# ── Staging PersistentVolume ────────────────────────────────────────────────────
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv-staging
+  labels:
+    environment: staging
+    project: ecommerce
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data/ecommerce/staging/postgres
+---
+# ── Staging PersistentVolumeClaim ──────────────────────────────────────────────
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: staging
+  labels:
+    environment: staging
+    project: ecommerce
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 1Gi
+---
+# ── Prod PersistentVolume ───────────────────────────────────────────────────────
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv-prod
+  labels:
+    environment: prod
+    project: ecommerce
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data/ecommerce/prod/postgres
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: prod
+  labels:
+    environment: prod
+    project: ecommerce
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 2Gi

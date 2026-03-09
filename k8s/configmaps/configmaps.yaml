@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ecommerce-config
+  namespace: dev
+  labels:
+    environment: dev
+    project: ecommerce
+data:
+  DB_HOST: "localhost"
+  DB_PORT: "5433"
+  DB_NAME: "ecommerce"
+  DB_USER: "postgres"
+  NODE_ENV: "development"
+  PRODUCT_SERVICE_URL: "http://product-service:3001"
+  ORDER_SERVICE_URL: "http://order-service:3002"
+  PRODUCT_SERVICE_PORT: "3001"
+  ORDER_SERVICE_PORT: "3002"
+  FRONTEND_PORT: "80"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ecommerce-config
+  namespace: staging
+  labels:
+    environment: staging
+    project: ecommerce
+data:
+  DB_HOST: "localhost"
+  DB_PORT: "5434"
+  DB_NAME: "ecommerce"
+  DB_USER: "postgres"
+  NODE_ENV: "staging"
+  PRODUCT_SERVICE_URL: "http://product-service:3001"
+  ORDER_SERVICE_URL: "http://order-service:3002"
+  PRODUCT_SERVICE_PORT: "3001"
+  ORDER_SERVICE_PORT: "3002"
+  FRONTEND_PORT: "80"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ecommerce-config
+  namespace: prod
+  labels:
+    environment: prod
+    project: ecommerce
+data:
+  DB_HOST: "localhost"
+  DB_PORT: "5435"
+  DB_NAME: "ecommerce"
+  DB_USER: "postgres"
+  NODE_ENV: "production"
+  PRODUCT_SERVICE_URL: "http://product-service:3001"
+  ORDER_SERVICE_URL: "http://order-service:3002"
+  PRODUCT_SERVICE_PORT: "3001"
+  ORDER_SERVICE_PORT: "3002"
+  FRONTEND_PORT: "80"
