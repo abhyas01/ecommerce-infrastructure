@@ -7,7 +7,7 @@ metadata:
     environment: dev
     project: ecommerce
 data:
-  DB_HOST: "localhost"
+  DB_HOST: "192.168.49.1"
   DB_PORT: "5433"
   DB_NAME: "ecommerce"
   DB_USER: "postgres"
@@ -27,7 +27,7 @@ metadata:
     environment: staging
     project: ecommerce
 data:
-  DB_HOST: "localhost"
+  DB_HOST: "192.168.49.1"
   DB_PORT: "5434"
   DB_NAME: "ecommerce"
   DB_USER: "postgres"
@@ -47,7 +47,7 @@ metadata:
     environment: prod
     project: ecommerce
 data:
-  DB_HOST: "localhost"
+  DB_HOST: "192.168.49.1"
   DB_PORT: "5435"
   DB_NAME: "ecommerce"
   DB_USER: "postgres"
